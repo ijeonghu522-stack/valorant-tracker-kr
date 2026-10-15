@@ -201,6 +201,37 @@
   $('buyPro').addEventListener('click', function () {
     notice('토스뱅크 1908-4172-3421 천우진 으로 20,000원을 입금(입금자명=주문자명)하면 키를 보내드립니다.');
   });
+  // Pro 테마 선택 (무료는 잠금)
+  (function themes() {
+    var row = $('themeRow');
+    if (!row || !window.Themes) return;
+    var names = { red: '레드', gold: '골드', blue: '블루', purple: '퍼플' };
+    function paint() {
+      row.innerHTML = '';
+      Themes.THEMES.forEach(function (t) {
+        var b = document.createElement('button');
+        b.className = 'theme-btn';
+        b.dataset.t = t;
+        b.textContent = names[t] + (window.__pro ? '' : ' 🔒');
+        b.addEventListener('click', function () {
+          if (!window.__pro) { notice('테마 변경은 Pro 전용입니다.'); return; }
+          Themes.set(t, paintSel);
+        });
+        row.appendChild(b);
+      });
+      paintSel();
+    }
+    function paintSel() {
+      Themes.get(function (cur) {
+        Array.prototype.forEach.call(row.children, function (b) {
+          if (b.dataset.t === cur) b.classList.add('sel');
+          else b.classList.remove('sel');
+        });
+      });
+    }
+    paint();
+  })();
+
   $('openLicense').addEventListener('click', function () {
     if (window.electron && window.electron.openLicense) window.electron.openLicense();
     else notice('exe에서 Shift+F8을 눌러 등록창을 여세요.');

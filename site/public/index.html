@@ -34,6 +34,28 @@
     </div>
   </section>
 
+  <section id="search" class="wrap">
+    <h2>전적 검색</h2>
+    <div class="card">
+      <div class="search-row">
+        <input id="q" placeholder="Riot ID (예: 이름#KR1)" />
+        <button class="btn red" id="go">조회</button>
+      </div>
+      <div id="msg" class="mut"></div>
+      <div id="res" class="hidden">
+        <div class="res-head"><b id="rName"></b><span class="grade" id="rGrade"></span><span id="rScore" class="mut"></span></div>
+        <div class="stat-grid">
+          <div><span>K/D</span><b id="rKd"></b></div>
+          <div><span>DPR</span><b id="rDpr"></b></div>
+          <div><span>승률</span><b id="rWin"></b></div>
+          <div><span>HS%</span><b id="rHs"></b></div>
+          <div><span>경기</span><b id="rM"></b></div>
+        </div>
+        <div id="rMaps" class="mut"></div>
+      </div>
+    </div>
+  </section>
+
   <section id="features" class="wrap">
     <h2>기능</h2>
     <div class="grid">

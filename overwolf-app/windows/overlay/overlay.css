@@ -3,6 +3,12 @@ html, body { margin:0; background:transparent; font-family:"Malgun Gothic","Sego
 #panel { background:rgba(10,13,22,.88); border-radius:12px; color:#e8ecf4; padding:10px 14px; border:1px solid #2a3348; }
 body.pro #panel { border-color:#d9a400; box-shadow:0 0 24px rgba(217,164,0,.25); }
 body.pro .head span:first-child::after { content:' PRO'; color:#d9a400; font-size:11px; }
+body[data-theme="blue"].pro #panel { border-color:#3aa0ff; box-shadow:0 0 24px rgba(58,160,255,.25); }
+body[data-theme="blue"].pro .head span:first-child::after { color:#3aa0ff; }
+body[data-theme="purple"].pro #panel { border-color:#a06bff; box-shadow:0 0 24px rgba(160,107,255,.25); }
+body[data-theme="purple"].pro .head span:first-child::after { color:#a06bff; }
+body[data-theme="red"].pro #panel { border-color:#ff4655; box-shadow:0 0 24px rgba(255,70,85,.25); }
+body[data-theme="red"].pro .head span:first-child::after { color:#ff4655; }
 .head { display:flex; gap:10px; align-items:center; font-weight:800; font-size:13px; }
 .tag { background:#ff4655; border-radius:4px; padding:1px 8px; font-size:12px; }
 .hint { margin-left:auto; color:#8b93a7; font-size:11px; font-weight:400; }

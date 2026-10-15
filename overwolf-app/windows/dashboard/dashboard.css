@@ -1,4 +1,13 @@
 :root { --red:#ff4655; --bg:#10141f; --card:#1a2030; --card2:#141a28; --txt:#e8ecf4; --mut:#8b93a7; --green:#35c759; }
+body[data-theme="gold"] { --red:#d9a400; }
+body[data-theme="blue"] { --red:#3aa0ff; }
+body[data-theme="purple"] { --red:#a06bff; }
+.theme-btn { border:2px solid #333; border-radius:8px; padding:8px 18px; font-weight:800; cursor:pointer; color:#fff; background:#0b0f18; }
+.theme-btn.sel { border-color:#fff; }
+.theme-btn[data-t="red"] { background:#ff4655; }
+.theme-btn[data-t="gold"] { background:#d9a400; color:#201a00; }
+.theme-btn[data-t="blue"] { background:#3aa0ff; }
+.theme-btn[data-t="purple"] { background:#a06bff; }
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--txt); font-family:"Malgun Gothic","Segoe UI",sans-serif; }
 .hidden { display:none !important; }
