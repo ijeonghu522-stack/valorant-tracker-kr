@@ -7,19 +7,18 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: valorant-tracker/electron-app
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+        working-directory: electron-app
       - run: npm run dist
+        working-directory: electron-app
       - uses: softprops/action-gh-release@v2
         with:
-          files: valorant-tracker/electron-app/dist/Valorant-Tracker-KR-Setup-*.exe
+          files: electron-app/dist/Valorant-Tracker-KR-Setup-*.exe
           body: |
             발로란트 트래커 KR 무료 버전입니다.
             실행 후 Pro 키를 등록하면 고급 기능이 열립니다.

@@ -4,6 +4,7 @@
 'use strict';
 
 const { app, BrowserWindow, globalShortcut, ipcMain } = require('electron');
+const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
@@ -129,6 +130,21 @@ app.whenReady().then(async () => {
   if (BrowserWindow.getAllWindows().length === 0) checkKey(loadKey()).then(openDashboard);
 });
 });
+
+// 발로란트 실행 감지 → 오버레이 자동 표시 (계정 인식: 마지막 조회 ID는 대시보드가 기억)
+let gameSeen = false;
+setInterval(() => {
+  exec('tasklist /FI "IMAGENAME eq VALORANT-Win64-Shipping.exe" /NH', (e, out) => {
+    const running = !e && /VALORANT-Win64-Shipping/i.test(out || '');
+    if (running && !gameSeen) {
+      gameSeen = true;
+      if (!overlayWin || overlayWin.isDestroyed()) toggleOverlay();
+      else { overlayWin.show(); overlayVisible = true; }
+      if (dashWin && !dashWin.isDestroyed()) dashWin.minimize();
+    }
+    if (!running) gameSeen = false;
+  });
+}, 5000);
 
 app.on('will-quit', () => globalShortcut.unregisterAll());
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit(); });

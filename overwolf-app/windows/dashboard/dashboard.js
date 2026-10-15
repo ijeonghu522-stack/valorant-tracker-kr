@@ -146,8 +146,15 @@
     };
   }
 
+  // 마지막 계정 기억 (다음 실행 때 자동 입력)
+  function memGet(k) { try { return localStorage.getItem('vlt_' + k) || ''; } catch (e) { return ''; } }
+  function memSet(k, v) { try { localStorage.setItem('vlt_' + k, v); } catch (e) {} }
+  var lastId = memGet('lastId');
+  if (lastId) $('riotId').value = lastId;
+
   function search() {
     var v = $('riotId').value.trim();
+    memSet('lastId', v);
     if (!v || v.indexOf('#') < 0) { notice('Riot ID 형식으로 입력하세요. 예: 이름#KR1'); return; }
     var parts = v.split('#');
     notice('조회 중…');
@@ -199,5 +206,7 @@
     else notice('exe에서 Shift+F8을 눌러 등록창을 여세요.');
   });
 
-  render(mock('_player'));
+  // 저장된 계정이 있으면 자동 조회
+  if (lastId && lastId.indexOf('#') >= 0) search();
+  else render(mock('_player'));
 })();
