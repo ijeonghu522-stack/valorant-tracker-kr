@@ -1,0 +1,17 @@
+* { box-sizing:border-box; }
+html, body { margin:0; background:transparent; font-family:"Malgun Gothic","Segoe UI",sans-serif; }
+#panel { background:rgba(10,13,22,.88); border-radius:12px; color:#e8ecf4; padding:10px 14px; border:1px solid #2a3348; }
+body.pro #panel { border-color:#d9a400; box-shadow:0 0 24px rgba(217,164,0,.25); }
+body.pro .head span:first-child::after { content:' PRO'; color:#d9a400; font-size:11px; }
+.head { display:flex; gap:10px; align-items:center; font-weight:800; font-size:13px; }
+.tag { background:#ff4655; border-radius:4px; padding:1px 8px; font-size:12px; }
+.hint { margin-left:auto; color:#8b93a7; font-size:11px; font-weight:400; }
+.cols { display:flex; gap:12px; margin-top:8px; }
+.team { flex:1; } .team h3 { margin:4px 0; font-size:13px; }
+table { width:100%; border-collapse:collapse; font-size:12px; }
+th { color:#8b93a7; font-weight:600; text-align:left; padding:3px 6px; border-bottom:1px solid #2a3348; }
+td { padding:4px 6px; border-bottom:1px solid #1a2030; }
+tr.me td { background:rgba(255,70,85,.12); }
+.dim { color:#8b93a7; } .policy { cursor:help; font-size:11px; }
+.good { color:#35c759; } .bad { color:#ff6b6b; }
+#status { font-size:11px; margin-top:6px; }

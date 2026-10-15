@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>tracker overlay</title>
+  <link rel="stylesheet" href="overlay.css" />
+</head>
+<body>
+  <div id="panel">
+    <div class="head">
+      <span>VALORANT TRACKER</span>
+      <span id="matchTag" class="tag">대기 중</span>
+      <span class="hint">Shift+F5 숨기기</span>
+    </div>
+    <div class="cols">
+      <div class="team">
+        <h3>아군</h3>
+        <table><thead><tr><th>요원</th><th>랭크</th><th>Score</th><th>K/D</th><th>Win%</th><th>DPR</th><th>HS%</th><th>최근</th></tr></thead>
+        <tbody id="allies"><tr><td colspan="7" class="dim">요원 선택창에서 로스터 수신 대기…</td></tr></tbody></table>
+      </div>
+      <div class="team">
+        <h3>상대 <span class="dim policy" title="Riot 정책상 경기 전 상대 상세 스탯(스카우팅)은 표시하지 않습니다">ⓘ 정책</span></h3>
+        <table><thead><tr><th>요원</th><th>랭크</th><th></th><th></th><th></th><th></th><th></th></tr></thead>
+        <tbody id="enemies"><tr><td colspan="7" class="dim">-</td></tr></tbody></table>
+      </div>
+    </div>
+    <div id="status" class="dim"></div>
+  </div>
+  <script src="../../shared/browser-shim.js"></script>
+  <script src="../../shared/gep.js"></script>
+  <script src="../../shared/tracker-score.js"></script>
+  <script src="../../shared/sim-data.js"></script>
+  <script src="../../shared/riot-proxy-client.js"></script>
+  <script src="overlay.js"></script>
+</body>
+</html>

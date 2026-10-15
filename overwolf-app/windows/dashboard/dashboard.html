@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>발로란트 트래커</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo">Q</span> 발로란트 트래커 <span class="kr">KR</span></div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="overview">Overview</button>
+      <button class="tab" data-tab="agents">Agents</button>
+      <button class="tab" data-tab="score">Score</button>
+      <button class="tab" data-tab="pro">Pro</button>
+    </nav>
+    <div class="search">
+      <input id="riotId" placeholder="Riot ID (예: 이름#KR1)" />
+      <button id="searchBtn">조회</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="tab-overview" class="tabpanel">
+      <div id="notice" class="notice hidden"></div>
+      <h2><span class="ico">◈</span> Lifetime Overview <span id="playMeta" class="meta"></span></h2>
+      <div class="cards">
+        <div class="card rank"><div class="rank-icon" id="rankIcon">S</div><div id="rankName">Silver 2</div></div>
+        <div class="card"><div class="label">Damage / Round</div><div class="value" id="stDpr">-</div></div>
+        <div class="card"><div class="label">K / D</div><div class="value" id="stKd">-</div></div>
+        <div class="card"><div class="label">Kills</div><div class="value" id="stKills">-</div></div>
+        <div class="card"><div class="label">Win %</div><div class="value" id="stWin">-</div></div>
+        <div class="card"><div class="label">HS %</div><div class="value" id="stHs">-</div></div>
+      </div>
+      <div class="form-strip"><span class="label" style="color:var(--mut);font-size:13px;">최근 전적</span><div class="dots" id="recentForm"></div><span class="meta" id="streak"></span></div>
+      <h3>Attack vs Defense</h3>
+      <div class="split">
+        <div class="side"><h4>🗡 Attack</h4><div class="bar-row"><span>Kills</span><div class="bar"><i id="atkK" class="g"></i></div><b id="atkKv">-</b></div>
+          <div class="bar-row"><span>Deaths</span><div class="bar"><i id="atkD" class="r"></i></div><b id="atkDv">-</b></div>
+          <div class="bar-row"><span>Assists</span><div class="bar"><i id="atkA" class="y"></i></div><b id="atkAv">-</b></div></div>
+        <div class="side"><h4>🛡 Defense</h4><div class="bar-row"><span>Kills</span><div class="bar"><i id="defK" class="g"></i></div><b id="defKv">-</b></div>
+          <div class="bar-row"><span>Deaths</span><div class="bar"><i id="defD" class="r"></i></div><b id="defDv">-</b></div>
+          <div class="bar-row"><span>Assists</span><div class="bar"><i id="defA" class="y"></i></div><b id="defAv">-</b></div></div>
+      </div>
+      <h3>Map Win Rates <span class="meta" id="mapMeta"></span></h3>
+      <div class="side"><table id="mapTable" style="width:100%;font-size:13px;"></table>
+      <div class="locked-msg" id="mapLock">🔒 4번째 맵부터는 Pro에서 열립니다.</div></div>
+    </section>
+
+    <section id="tab-agents" class="tabpanel hidden">
+      <h2>Agents</h2>
+      <div id="agentGrid" class="agent-grid"></div>
+    </section>
+
+    <section id="tab-score" class="tabpanel hidden">
+      <h2>Tracker Score</h2>
+      <div class="score-wrap">
+        <div id="scoreBadge" class="score-badge">-</div>
+        <div class="score-meta"><div id="scoreNum">-</div><div id="scoreNote" class="meta"></div></div>
+      </div>
+      <div class="tiers"><span>D ~299</span><span>C 300~474</span><span>B 475~649</span><span>A 650~824</span><span>S 825~</span></div>
+      <div class="pro-note" data-pro-only id="predictBox">다음 등급 예측: <b id="predictTxt">-</b> <span class="unlock">🔓 PRO</span></div>
+      <div class="pro-note locked-msg" id="scoreLock">🔒 등급 예측·상세 분석은 Pro에서 열립니다.</div>
+    </section>
+
+    <section id="tab-pro" class="tabpanel hidden">
+      <h2>Pro — $20/월</h2>
+      <ul class="pro-list">
+        <li>✅ 최근 30경기 심층 분석 (무료는 10경기)</li>
+        <li>✅ 맵별 승률 전체 + 다음 등급 예측 리포트</li>
+        <li>✅ 오버레이 Pro 골드 테마</li>
+        <li>✅ 주간 목표 코칭 (연승/연패 추적)</li>
+      </ul>
+      <div id="proState" class="meta">구독 상태 확인 중…</div>
+      <button id="buyPro" class="btn-red">Pro 구매하기 ($20/월, 계좌이체)</button>
+      <button id="openLicense" class="btn-red" style="background:#0f1923;">받은 키 등록하기</button>
+      <p class="fine">토스뱅크 1908-4172-3421 천우진 으로 20,000원 입금(입금자명=주문자명) 후 키를 받아 등록하세요. Shift+F8로도 등록창이 열립니다.</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>무단 복제·크랙·라이선스 공유 시 민·형사상 책임을 물을 수 있습니다.</span>
+    <span class="right">백엔드: <input id="backendUrl" size="24" /> <button id="saveBackend">저장</button> <button id="simToggle" title="게임 없이 오버레이 테스트">시뮬레이션: OFF</button></span>
+  </footer>
+
+  <script src="../../shared/browser-shim.js"></script>
+  <script src="../../shared/tracker-score.js"></script>
+  <script src="../../shared/riot-proxy-client.js"></script>
+  <script src="../../shared/subscriptions.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

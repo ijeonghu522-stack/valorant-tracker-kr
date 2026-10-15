@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>라이선스 등록 — 발로란트 트래커</title>
+<style>
+body { font-family:"Malgun Gothic",sans-serif; background:#10141f; color:#e8ecf4; margin:0; display:flex; align-items:center; justify-content:center; height:100vh; }
+.box { background:#1a2030; border-radius:12px; padding:28px; width:360px; text-align:center; }
+h1 { color:#ff4655; font-size:20px; margin:0 0 6px; }
+input { width:100%; padding:10px; margin:12px 0; border-radius:6px; border:1px solid #333; background:#0b0f18; color:#fff; font-size:15px; box-sizing:border-box; }
+button { width:100%; background:#ff4655; color:#fff; border:0; border-radius:6px; padding:11px; font-size:15px; font-weight:800; cursor:pointer; }
+#msg { min-height:20px; font-size:13px; color:#ffb3b3; margin-top:8px; }
+.dev { font-size:11px; color:#8b93a7; margin-top:10px; word-break:break-all; }
+.fine { font-size:11px; color:#8b93a7; margin-top:14px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>🔑 라이선스 등록</h1>
+  <div style="font-size:13px;color:#8b93a7;">구매 후 받은 키를 입력하세요 (기기 1대 귀속)</div>
+  <input id="key" placeholder="VLTKR-XXXX-XXXX-XXXX" />
+  <button id="go">등록하고 시작</button>
+  <div id="msg"></div>
+  <div class="dev" id="dev"></div>
+  <div class="fine">무단 복제·크랙·라이선스 공유 시 민·형사상 책임을 물을 수 있습니다.<br/>먼저 백엔드(start-backend.bat)가 켜져 있어야 합니다.</div>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+window.electron.deviceId().then((d) => { $('dev').textContent = '이 PC ID: ' + d; });
+$('go').addEventListener('click', async () => {
+  const key = $('key').value.trim();
+  if (!key) { $('msg').textContent = '키를 입력하세요.'; return; }
+  $('msg').textContent = '확인 중…';
+  const r = await window.electron.activate(key);
+  if (r.ok) { $('msg').textContent = '등록 완료!'; }
+  else {
+    const map = { 'unknown-key': '없는 키입니다.', 'device-limit': '이미 다른 PC에 등록된 키입니다.', 'revoked': '회수된 키입니다.', 'suspended': '정지된 키입니다.', 'expired': '만료된 키입니다.', 'backend-unreachable': '백엔드가 꺼져 있습니다. start-backend.bat를 먼저 켜세요.' };
+    $('msg').textContent = map[r.error] || ('실패: ' + r.error);
+  }
+});
+</script>
+</body>
+</html>

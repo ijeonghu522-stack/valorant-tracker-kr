@@ -1,0 +1,83 @@
+{
+  "manifest_version": 1,
+  "type": "WebApp",
+  "meta": {
+    "name": "Valorant Tracker KR",
+    "author": "Cheon Woojin",
+    "version": "0.1.0",
+    "minimum-overwolf-version": "0.174.0",
+    "minimum-gep-version": "283.0.0",
+    "description": "발로란트 전적 대시보드, Tracker Score, 요원 선택창 팀 오버레이. 공식 Riot API + Overwolf GEP 사용.",
+    "dock_button_title": "발로란트 트래커",
+    "icon": "assets/icon.png",
+    "icon_gray": "assets/icon_gray.png",
+    "launcher_icon": "assets/launcher.ico",
+    "window_icon": "assets/icon.png"
+  },
+  "permissions": [
+    "GameInfo",
+    "Hotkeys",
+    "Profile",
+    "Subscription"
+  ],
+  "data": {
+    "game_targeting": {
+      "type": "dedicated",
+      "game_ids": [21640]
+    },
+    "game_events": [21640],
+    "launch_events": [
+      {
+        "event": "GameLaunch",
+        "event_data": { "game_ids": [21640] },
+        "start_minimized": true
+      }
+    ],
+    "hotkeys": {
+      "toggle_overlay": {
+        "title": "팀 오버레이 표시/숨기기",
+        "action-type": "custom",
+        "default": "Shift+F5"
+      },
+      "toggle_dashboard": {
+        "title": "대시보드 열기/닫기",
+        "action-type": "custom",
+        "default": "Shift+F6"
+      }
+    },
+    "url_protocol": {
+      "scheme": "vltrackerkr"
+    },
+    "start_window": "background",
+    "force_browser": "user",
+    "windows": {
+      "background": {
+        "file": "windows/background/background.html",
+        "is_background_page": true,
+        "show_in_taskbar": false
+      },
+      "dashboard": {
+        "file": "windows/dashboard/dashboard.html",
+        "desktop_only": true,
+        "resizable": true,
+        "show_minimize": true,
+        "size": { "width": 1280, "height": 820 },
+        "min_size": { "width": 1024, "height": 640 }
+      },
+      "overlay": {
+        "file": "windows/overlay/overlay.html",
+        "in_game_only": true,
+        "transparent": true,
+        "resizable": false,
+        "show_in_taskbar": false,
+        "grab_keyboard_focus": false,
+        "isInputPassThrough": true,
+        "size": { "width": 980, "height": 600 },
+        "start_position": { "left": 0, "top": 80 }
+      }
+    },
+    "externally_connectable": {
+      "matches": ["https://localhost:*", "https://127.0.0.1:*"]
+    }
+  }
+}

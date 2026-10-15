@@ -1,0 +1,35 @@
+{
+  "name": "valorant-tracker-kr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "발로란트 트래커 KR — 개인 배포 exe (대시보드 + 오버레이 + 라이선스)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.vltrackerkr.app",
+    "productName": "발로란트 트래커",
+    "files": ["main.js", "preload.js", "renderer/**/*"],
+    "extraResources": [
+      { "from": "../overwolf-app", "to": "tracker-ui" },
+      { "from": "../backend/package.json", "to": "backend-info.json" }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "../overwolf-app/assets/launcher.ico",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "shortcutName": "발로란트 트래커",
+      "artifactName": "Valorant-Tracker-KR-Setup-${version}.exe"
+    }
+  }
+}

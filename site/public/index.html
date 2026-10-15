@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>발로란트 트래커 KR — 전적 분석 &amp; 인게임 오버레이</title>
+<meta name="description" content="발로란트 전적 대시보드, Tracker Score, 인게임 팀 오버레이. 공식 Riot API 기반으로 안전하게 동작합니다." />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="top">
+  <div class="wrap nav">
+    <div class="brand"><span class="logo">V</span> 발로란트 트래커 <span class="kr">KR</span></div>
+    <nav>
+      <a href="#features">기능</a>
+      <a href="#score">스코어</a>
+      <a href="#pro">Pro</a>
+      <a href="#download">다운로드</a>
+      <a href="#compliance">정책 준수</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="ver">v0.1.0 · Windows 10+ 64bit</div>
+      <h1>내 발로란트 실력을<br />숫자로 증명하세요</h1>
+      <p class="sub">전적 대시보드 · Tracker Score · 요원 선택창 팀 오버레이.<br />공식 Riot API만 사용합니다. 메모리 읽기·인젝션 없음.</p>
+      <div class="cta">
+        <a class="btn red" href="#download">다운로드</a>
+        <a class="btn dark" href="#pro">Pro 알아보기 ($20/월)</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="wrap">
+    <h2>기능</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>📊 Lifetime Overview</h3>
+        <p>K/D, 라운드당 데미지, 승률, HS%와 공/수 스플릿을 한 화면에. 요원별 성적까지 자동 집계됩니다.</p>
+      </div>
+      <div class="card">
+        <h3>🖥️ 인게임 오버레이</h3>
+        <p>요원 선택창에서 아군 팀의 커리어 스탯과 Score를 확인. 단축키 Shift+F5로 표시/숨기기.</p>
+      </div>
+      <div class="card">
+        <h3>🔑 라이선스 시스템</h3>
+        <p>구매 키 1개당 PC 1대 귀속. 분실·도용 시 관리자가 즉시 정지/회수할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="score" class="wrap">
+    <h2>Tracker Score</h2>
+    <p class="mut">K/D · DPR · 승률 · HS%를 합산한 0~1000점 실력 지표입니다.</p>
+    <div class="tiers">
+      <div class="tier d"><b>D</b><span>~299</span></div>
+      <div class="tier c"><b>C</b><span>300~474</span></div>
+      <div class="tier b"><b>B</b><span>475~649</span></div>
+      <div class="tier a"><b>A</b><span>650~824</span></div>
+      <div class="tier s"><b>S</b><span>825~</span></div>
+    </div>
+  </section>
+
+  <section id="pro" class="wrap">
+    <h2>Pro — $20/월</h2>
+    <ul class="pro-list">
+      <li>✅ 최근 30경기 심층 분석 (무료는 10경기)</li>
+      <li>✅ 맵별 승률 전체 + 다음 등급 예측 리포트</li>
+      <li>✅ 오버레이 Pro 골드 테마</li>
+    </ul>
+    <p class="mut">무료 버전도 다운로드·실행 가능. 같은 앱에서 키를 등록하면 Pro가 열립니다.</p>
+    <div class="pay">
+      <h3>계좌이체로 구매하기</h3>
+      <ol>
+        <li>아래 계좌로 <b>20,000원</b> 입금 (입금자명을 주문자명으로)</li>
+        <li>입금 확인 후 라이선스 키(<code>VLTKR-…</code>) 발급</li>
+        <li>앱 실행 → 키 입력 → Pro 시작</li>
+      </ol>
+      <div class="account">토스뱅크 <b>1908-4172-3421</b> 예금주 천우진</div>
+      <p class="mut">무단 복제·크랙·라이선스 공유 시 민·형사상 책임을 물을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section id="download" class="wrap">
+    <h2>다운로드</h2>      <div class="card">
+        <h3>발로란트 트래커 Setup 0.1.0.exe (Windows) — 무료</h3>
+        <p>무료 버전은 누구나 다운로드·실행할 수 있습니다. Pro 키는 구매자에게 함께 제공됩니다.</p>
+        <p><a class="btn red" id="dlBtn" href="#download">다운로드</a></p>
+        <p class="mut" id="dlNote"></p>
+        <p class="mut">요구사항: Windows 10+ 64bit · 발로란트는 테두리 없음 모드 권장(전체화면 독점 모드에서는 오버레이가 표시되지 않음) · 미서명 빌드이므로 SmartScreen 경고 시 “추가 정보 → 실행” 선택</p>
+      </div>
+  </section>
+
+  <section id="compliance" class="wrap">
+    <h2>정책 준수</h2>
+    <ul class="pro-list">
+      <li>🔒 공식 Riot API만 사용. 메모리 읽기·인젝션·스크래핑 없음. 오버레이는 게임 화면 위 투명 창 방식입니다</li>
+      <li>🤝 경기 시작 전 상대팀 상세 스탯(스카우팅) 미제공 — 상대는 요원+랭크만 표시</li>
+      <li>🎁 무료 티어 제공. Pro는 심층 분석 기능에만 과금</li>
+    </ul>
+    <h2>자주 묻는 질문</h2>
+    <div class="faq">
+      <button>밴 위험은 없나요?<span>+</span></button>
+      <div class="a">게임 프로세스를 건드리지 않고 공식 데이터만 사용하므로, 치트성 개입은 없습니다. 단, Riot은 허용 목록을 두지 않으므로 “절대 안전”을 보장하지는 않습니다.</div>
+    </div>
+    <div class="faq">
+      <button>환불되나요?<span>+</span></button>
+      <div class="a">구매 당일 미사용 키에 한해 입금자명 확인 후 환불합니다. 사용된 키는 회수 처리됩니다.</div>
+    </div>
+    <div class="faq">
+      <button>PC를 바꾸면 어떻게 하나요?<span>+</span></button>
+      <div class="a">관리자에게 기존 기기 해제를 요청하면 새 PC에 등록할 수 있습니다. 키 1개당 PC 1대입니다.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>본 사이트와 앱은 Riot Games와 제휴 관계가 없는 비공식 프로젝트입니다. VALORANT 관련 상표권은 Riot Games, Inc.에 있습니다.</p>
+    <p>© 2026 Valorant Tracker KR</p>
+  </div>
+</footer>
+<script src="/config.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
